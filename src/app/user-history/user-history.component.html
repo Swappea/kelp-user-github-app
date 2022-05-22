@@ -1,0 +1,9 @@
+<div *ngIf="userData.length !== 0">
+    <button type="button" class="btn btn-primary my-3" (click)="clearSearches()">Clear past searches</button>
+    <ul class="list-group">
+        <li *ngFor="let user of userData" class="list-group-item">{{user.name}}</li>
+    </ul>
+</div>
+<div *ngIf="userData.length === 0" class="alert alert-info" role="alert">
+    No past searches!
+</div>

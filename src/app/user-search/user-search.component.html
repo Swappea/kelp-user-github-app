@@ -1,0 +1,19 @@
+<div class="d-flex flex-column align-items-center">
+    <div class="input-group mb-3 w-25">
+        <input type="text" class="form-control" placeholder="Search username" [(ngModel)]="userSearch">
+        <button [disabled]="!userSearch" class="btn btn-primary" type="button" id="button-addon2"
+            (click)="onSearchHandler()">Search</button>
+    </div>
+    <div class="d-flex justify-content-center mt-2 p-5" *ngIf="status !== StatusType.initialized">
+        <div *ngIf="status === StatusType.ready" class="border p-5 w-100 d-flex flex-column justify-content-center">
+            <img [src]="userData.avatar_url" alt="" width="50" height="50" class="rounded-circle">
+            <h1>Name: {{userData.name}}</h1>
+            <h3>Followers: {{userData.followers}}</h3>
+            <p>Repos: {{userData.repos_url}}</p>
+        </div>
+        <div *ngIf="status === StatusType.notFound" class="alert alert-danger" role="alert">User not found!</div>
+        <div *ngIf="status === StatusType.loading" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
